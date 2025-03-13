@@ -37,19 +37,19 @@ const ncalcLanguage = StreamLanguage.define({
 const ncalcTheme = createTheme({
   theme: "dark",
   settings: {
-    background: "#1e1e1e",
-    foreground: "#d4d4d4",
-    caret: "#d4d4d4",
-    selection: "#264f78",
-    lineHighlight: "#2a2a2a",
+    background: "#ffffff", // White background (VS Light)
+    foreground: "#000000", // Black text color
+    caret: "#000000", // Black caret color
+    selection: "#ADD6FF", // Light blue selection (VS Light)
+    lineHighlight: "#F3F3F3", // Light gray active line highlight
   },
   styles: [
-    { tag: t.number, color: "#164" },
-    { tag: t.operator, color: "#219" },
-    { tag: t.bracket, color: "#708090" },
-    { tag: t.function(t.variableName), color: "#30a" },
-    { tag: t.keyword, color: "#708", fontWeight: "bold" },
-    { tag: t.variableName, color: "#00f" },
+    { tag: t.number, color: "#098658" }, // Green for numbers (VS Light)
+    { tag: t.operator, color: "#000000" }, // Black for operators
+    { tag: t.bracket, color: "#000000" }, // Black for brackets
+    { tag: t.function(t.variableName), color: "#795E26" }, // Brown for functions
+    { tag: t.keyword, color: "#0000FF", fontWeight: "bold" }, // Blue for keywords
+    { tag: t.variableName, color: "#001080" }, // Dark Blue for variables
   ],
 });
 
@@ -163,6 +163,7 @@ const Editor = ({ value, onChange = () => {}, setVariables = () => {} }) => {
   }, [code, setVariables]);
   return (
     <div className="editor">
+      <button onClick={()=>setCode(code+"X")}>add X</button>
       <CodeMirror
         value={code}
         height="400px"
